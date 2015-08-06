@@ -1,2 +1,2 @@
-# Code-Breaker
+# CodeBreaker
 A java implementation of the popular board game known as Mastermind.
