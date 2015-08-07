@@ -33,14 +33,15 @@ import net.peterfolta.codebreaker.main.Main;
 import org.eclipse.swt.events.ShellEvent;
 import org.eclipse.swt.events.ShellListener;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
 
 public class MainWindow {
 	
 	private Shell mainShell;
 	
-	public MainWindow() {
-		mainShell = new Shell(Display.getCurrent());
+	public MainWindow(Display display) {
+		mainShell = new Shell(display);
 		
 		mainShell.setText("CodeBreaker");
 		
@@ -63,6 +64,14 @@ public class MainWindow {
 		});
 		
 		drawBoard();
+	}
+	
+	public Shell getMainWindow() {
+		return mainShell;
+	}
+	
+	public void setMenu(Menu menu) {
+		mainShell.setMenuBar(menu);
 	}
 	
 	private void drawBoard() {

@@ -8,7 +8,7 @@
  * 
  * File:				MainWindowController.java
  * Created:				2015/8/6
- * Last modified:		2015/8/6
+ * Last modified:		2015/8/7
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -28,18 +28,25 @@
 package net.peterfolta.codebreaker.controllers.gui;
 
 import net.peterfolta.codebreaker.common.Controller;
+import net.peterfolta.codebreaker.gui.MainMenu;
 import net.peterfolta.codebreaker.gui.MainWindow;
+
+import org.eclipse.swt.widgets.Display;
 
 public class MainWindowController extends Controller {
 	
 	private MainWindow mainWindow;
+	private MainMenu mainMenu;
 	
 	public MainWindowController() {
 	}
 	
 	@Override
 	public void init() {
-		mainWindow = new MainWindow();
+		mainWindow = new MainWindow(Display.getCurrent());
+		mainMenu = new MainMenu(Display.getCurrent(), mainWindow.getMainWindow());
+		
+		mainWindow.setMenu(mainMenu.getMainMenu());
 	}
 	
 	public void showMainWindow() {
