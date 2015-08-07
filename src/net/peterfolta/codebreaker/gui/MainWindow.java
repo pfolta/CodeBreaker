@@ -70,7 +70,7 @@ public class MainWindow {
 		return mainShell;
 	}
 	
-	public void setMenu(Menu menu) {
+	public void setMenuBar(Menu menu) {
 		mainShell.setMenuBar(menu);
 	}
 	

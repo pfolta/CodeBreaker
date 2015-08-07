@@ -30,6 +30,7 @@ package net.peterfolta.codebreaker.controllers.gui;
 import net.peterfolta.codebreaker.common.Controller;
 import net.peterfolta.codebreaker.gui.MainMenu;
 import net.peterfolta.codebreaker.gui.MainWindow;
+import net.peterfolta.codebreaker.tools.Platform;
 
 import org.eclipse.swt.widgets.Display;
 
@@ -46,7 +47,12 @@ public class MainWindowController extends Controller {
 		mainWindow = new MainWindow(Display.getCurrent());
 		mainMenu = new MainMenu(Display.getCurrent(), mainWindow.getMainWindow());
 		
-		mainWindow.setMenu(mainMenu.getMainMenu());
+		/*
+		 * Attach Menu Bar to Main Window unless running on Mac OS
+		 */
+		if (!Platform.isMac()) {
+			mainWindow.setMenuBar(mainMenu.getMainMenu());			
+		}
 	}
 	
 	public void showMainWindow() {

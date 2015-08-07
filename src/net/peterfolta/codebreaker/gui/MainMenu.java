@@ -27,6 +27,8 @@
 
 package net.peterfolta.codebreaker.gui;
 
+import net.peterfolta.codebreaker.tools.Platform;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
@@ -49,7 +51,14 @@ public class MainMenu {
 	private MenuItem helpMenuAboutItem;
 	
 	public MainMenu(Display display, Shell parent) {
-		mainMenu = new Menu(parent, SWT.BAR);
+		/*
+		 * Undock Menu Bar on Mac OS
+		 */
+		if (Platform.isMac()) {
+			mainMenu = display.getMenuBar();
+		} else {
+			mainMenu = new Menu(parent, SWT.BAR);			
+		}
 		
 		gameMenuItem = new MenuItem(mainMenu, SWT.CASCADE);
 		gameMenuItem.setText("Game");
@@ -62,17 +71,27 @@ public class MainMenu {
 		
 		new MenuItem(gameMenu, SWT.SEPARATOR);
 		
-		gameMenuOptionsItem = new MenuItem(gameMenu, SWT.PUSH);
-		gameMenuOptionsItem.setText("Options");
+		/*
+		 * Do not create "Options" Menu Item on Mac OS
+		 */
+		if (!Platform.isMac()) {
+			gameMenuOptionsItem = new MenuItem(gameMenu, SWT.PUSH);
+			gameMenuOptionsItem.setText("Options");			
+		}
 		
 		new MenuItem(gameMenu, SWT.SEPARATOR);
 		
 		gameMenuResignItem = new MenuItem(gameMenu, SWT.PUSH);
 		gameMenuResignItem.setText("Resign");
 		
-		gameMenuExitItem = new MenuItem(gameMenu, SWT.PUSH);
-		gameMenuExitItem.setText("Exit\tAlt+F4");
-		gameMenuExitItem.setAccelerator(SWT.ALT | SWT.F4);
+		/*
+		 * Do not create "Exit" Menu Item on Mac OS
+		 */
+		if (!Platform.isMac()) {
+			gameMenuExitItem = new MenuItem(gameMenu, SWT.PUSH);
+			gameMenuExitItem.setText("Exit\tAlt+F4");
+			gameMenuExitItem.setAccelerator(SWT.ALT | SWT.F4);
+		}
 		
 		helpMenuItem = new MenuItem(mainMenu, SWT.CASCADE);
 		helpMenuItem.setText("Help");
@@ -80,8 +99,13 @@ public class MainMenu {
 		helpMenu = new Menu(helpMenuItem);
 		helpMenuItem.setMenu(helpMenu);
 		
-		helpMenuAboutItem = new MenuItem(helpMenu, SWT.PUSH);
-		helpMenuAboutItem.setText("About CodeBreaker");
+		/*
+		 * Do not create "About CodeBreaker" Menu Item on Mac OS
+		 */
+		if (!Platform.isMac()) {
+			helpMenuAboutItem = new MenuItem(helpMenu, SWT.PUSH);
+			helpMenuAboutItem.setText("About CodeBreaker");			
+		}
 	}
 	
 	public Menu getMainMenu() {
