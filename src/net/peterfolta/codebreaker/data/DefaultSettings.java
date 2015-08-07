@@ -8,7 +8,7 @@
  * 
  * File:				DefaultSettings.java
  * Created:				2015/8/6
- * Last modified:		2015/8/6
+ * Last modified:		2015/8/7
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -31,6 +31,7 @@ public class DefaultSettings {
 	
 	public static final int CODE_LENGTH = 4;
 	public static final int COLORS_COUNT = 6;
+	public static final boolean MULTIPLES_ALLOWED = true;
 	
 	public static final int ATTEMPTS_COUNT = 10;
 	

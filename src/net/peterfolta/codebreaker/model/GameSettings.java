@@ -8,7 +8,7 @@
  * 
  * File:				GameSettings.java
  * Created:				2015/8/6
- * Last modified:		2015/8/6
+ * Last modified:		2015/8/7
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -33,12 +33,14 @@ public class GameSettings {
 	
 	private int codeLength;
 	private int colorsCount;
+	private boolean multiplesAllowed;
 	
 	private int attemptsCount;
 	
 	public GameSettings() {
 		setCodeLength(DefaultSettings.CODE_LENGTH);
 		setColorsCount(DefaultSettings.COLORS_COUNT);
+		setMultiplesAllowed(DefaultSettings.MULTIPLES_ALLOWED);
 		
 		setAttemptsCount(DefaultSettings.ATTEMPTS_COUNT);
 	}
@@ -57,6 +59,14 @@ public class GameSettings {
 	
 	public int getColorsCount() {
 		return colorsCount;
+	}
+	
+	public void setMultiplesAllowed(boolean multiplesAllowed) {
+		this.multiplesAllowed = multiplesAllowed;
+	}
+	
+	public boolean getMultiplesAllowed() {
+		return multiplesAllowed;
 	}
 	
 	public void setAttemptsCount(int attemptsCount) {
