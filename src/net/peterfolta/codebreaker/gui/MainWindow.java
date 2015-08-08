@@ -28,6 +28,7 @@
 package net.peterfolta.codebreaker.gui;
 
 import net.peterfolta.codebreaker.enums.ExitCode;
+import net.peterfolta.codebreaker.main.Data;
 import net.peterfolta.codebreaker.main.Main;
 import net.peterfolta.codebreaker.tools.WindowTools;
 
@@ -44,7 +45,7 @@ public class MainWindow {
 	public MainWindow(Display display) {
 		mainShell = new Shell(display);
 		
-		mainShell.setText("CodeBreaker");
+		mainShell.setText(Data.APP_NAME);
 		
 		mainShell.addShellListener(new ShellListener() {
 			public void shellActivated(ShellEvent event) {

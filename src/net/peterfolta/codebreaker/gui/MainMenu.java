@@ -8,7 +8,7 @@
  * 
  * File:				MainMenu.java
  * Created:				2015/8/7
- * Last modified:		2015/8/7
+ * Last modified:		2015/8/8
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -27,6 +27,7 @@
 
 package net.peterfolta.codebreaker.gui;
 
+import net.peterfolta.codebreaker.main.Data;
 import net.peterfolta.codebreaker.tools.Platform;
 
 import org.eclipse.swt.SWT;
@@ -104,7 +105,7 @@ public class MainMenu {
 		 */
 		if (!Platform.isMac()) {
 			helpMenuAboutItem = new MenuItem(helpMenu, SWT.PUSH);
-			helpMenuAboutItem.setText("About CodeBreaker");			
+			helpMenuAboutItem.setText("About " + Data.APP_NAME);
 		}
 	}
 	

@@ -6,8 +6,8 @@
  * Version:				0.0.1
  * Website:				http://www.peterfolta.net/software/codebreaker
  * 
- * File:				GUIController.java
- * Created:				2015/8/6
+ * File:				Data.java
+ * Created:				2015/8/8
  * Last modified:		2015/8/8
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
@@ -25,43 +25,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.peterfolta.codebreaker.controllers.gui;
+package net.peterfolta.codebreaker.main;
 
-import org.eclipse.swt.widgets.Display;
 
-import net.peterfolta.codebreaker.common.Controller;
-import net.peterfolta.codebreaker.main.Data;
-
-public class GUIController extends Controller {
+public class Data {
 	
-	private MainWindowController mainWindowController;
+	/*
+	 * Application Info
+	 */
 	
-	private Display display;
+	public static final String APP_NAME = "CodeBreaker";
 	
-	public GUIController() {
-	}
+	public static final String APP_DESCRIPTION = "A java implementation of the popular board game known as Mastermind.";
 	
-	@Override
-	public void init() {
-		Display.setAppName(Data.APP_NAME);
-		Display.setAppVersion(Data.APP_VERSION);
-		
-		display = Display.getDefault();
-	}
+	public static final String APP_VERSION = "0.0.1";
 	
-	public void dispose() {
-		display.dispose();
-	}
+	public static final String APP_COPYRIGHT_HOLDER = "Peter Folta";
 	
-	public void showMainWindow() {
-		mainWindowController = new MainWindowController();
-		mainWindowController.showMainWindow();
-		
-		while (!display.isDisposed()) {
-			if (!display.readAndDispatch()) {
-				display.sleep();
-			}
-		}
-	}
+	public static final String APP_COPYRIGHT_YEAR = "2015";
+	
+	public static final String[] APP_AUTHORS = {
+		"Folta, Peter"
+	};
+	
+	public static final String[] APP_CONTRIBUTORS = {
+		"Allison, Chloë Louise",
+		"Folta, Peter"
+	};
+	
+	/*
+	 * Application Config
+	 */
+	
+	public static final String APP_REQUIRED_JVM = "1.6";
 	
 }
