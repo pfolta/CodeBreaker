@@ -51,6 +51,7 @@ public class MenuBar {
 	
 	private Menu helpMenu;
 	private MenuItem helpMenuItem;
+	private MenuItem helpMenuHelpItem;
 	private MenuItem helpMenuAboutItem;
 	
 	public MenuBar(Display display, Shell parent) {
@@ -122,10 +123,21 @@ public class MenuBar {
 		helpMenu = new Menu(helpMenuItem);
 		helpMenuItem.setMenu(helpMenu);
 		
+		helpMenuHelpItem = new MenuItem(helpMenu, SWT.PUSH);
+		helpMenuHelpItem.setText("Help\tF1");
+		helpMenuHelpItem.setAccelerator(SWT.F1);
+		helpMenuHelpItem.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event event) {
+				System.out.println("helpMenuHelpItem clicked");
+			}
+		});
+		
 		/*
 		 * Do not create "About CodeBreaker" Menu Item on Mac OS
 		 */
 		if (!Platform.isMac()) {
+			new MenuItem(helpMenu, SWT.SEPARATOR);
+			
 			helpMenuAboutItem = new MenuItem(helpMenu, SWT.PUSH);
 			helpMenuAboutItem.setText("About " + Data.APP_NAME);
 			helpMenuAboutItem.addListener(SWT.Selection, new Listener() {
