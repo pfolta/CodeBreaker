@@ -8,7 +8,7 @@
  * 
  * File:				MainWindow.java
  * Created:				2015/8/6
- * Last modified:		2015/8/6
+ * Last modified:		2015/8/8
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -29,6 +29,7 @@ package net.peterfolta.codebreaker.gui;
 
 import net.peterfolta.codebreaker.enums.ExitCode;
 import net.peterfolta.codebreaker.main.Main;
+import net.peterfolta.codebreaker.tools.WindowTools;
 
 import org.eclipse.swt.events.ShellEvent;
 import org.eclipse.swt.events.ShellListener;
@@ -64,6 +65,8 @@ public class MainWindow {
 		});
 		
 		drawBoard();
+		
+		WindowTools.centerShellOnPrimaryMonitor(display, mainShell);
 	}
 	
 	public Shell getMainWindow() {
