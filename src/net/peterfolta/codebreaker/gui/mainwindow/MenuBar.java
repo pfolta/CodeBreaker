@@ -25,18 +25,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.peterfolta.codebreaker.gui;
+package net.peterfolta.codebreaker.gui.mainwindow;
 
 import net.peterfolta.codebreaker.main.Data;
 import net.peterfolta.codebreaker.tools.Platform;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
 
-public class MainMenu {
+public class MenuBar {
 	
 	private Menu mainMenu;
 	
@@ -51,7 +53,7 @@ public class MainMenu {
 	private MenuItem helpMenuItem;
 	private MenuItem helpMenuAboutItem;
 	
-	public MainMenu(Display display, Shell parent) {
+	public MenuBar(Display display, Shell parent) {
 		/*
 		 * Undock Menu Bar on Mac OS
 		 */
@@ -69,6 +71,11 @@ public class MainMenu {
 		
 		gameMenuNewGameItem = new MenuItem(gameMenu, SWT.PUSH);
 		gameMenuNewGameItem.setText("New Game");
+		gameMenuNewGameItem.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event event) {
+				System.out.println("gameMenuNewGameItem clicked");
+			}
+		});
 		
 		new MenuItem(gameMenu, SWT.SEPARATOR);
 		
@@ -77,13 +84,23 @@ public class MainMenu {
 		 */
 		if (!Platform.isMac()) {
 			gameMenuOptionsItem = new MenuItem(gameMenu, SWT.PUSH);
-			gameMenuOptionsItem.setText("Options");			
+			gameMenuOptionsItem.setText("Options");
+			gameMenuOptionsItem.addListener(SWT.Selection, new Listener() {
+				public void handleEvent(Event event) {
+					System.out.println("gameMenuOptionsItem clicked");
+				}
+			});
 		}
 		
 		new MenuItem(gameMenu, SWT.SEPARATOR);
 		
 		gameMenuResignItem = new MenuItem(gameMenu, SWT.PUSH);
 		gameMenuResignItem.setText("Resign");
+		gameMenuResignItem.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event event) {
+				System.out.println("gameMenuResignItem clicked");
+			}
+		});
 		
 		/*
 		 * Do not create "Exit" Menu Item on Mac OS
@@ -92,6 +109,11 @@ public class MainMenu {
 			gameMenuExitItem = new MenuItem(gameMenu, SWT.PUSH);
 			gameMenuExitItem.setText("Exit\tAlt+F4");
 			gameMenuExitItem.setAccelerator(SWT.ALT | SWT.F4);
+			gameMenuExitItem.addListener(SWT.Selection, new Listener() {
+				public void handleEvent(Event event) {
+					System.out.println("gameMenuExitItem clicked");
+				}
+			});
 		}
 		
 		helpMenuItem = new MenuItem(mainMenu, SWT.CASCADE);
@@ -106,6 +128,11 @@ public class MainMenu {
 		if (!Platform.isMac()) {
 			helpMenuAboutItem = new MenuItem(helpMenu, SWT.PUSH);
 			helpMenuAboutItem.setText("About " + Data.APP_NAME);
+			helpMenuAboutItem.addListener(SWT.Selection, new Listener() {
+				public void handleEvent(Event event) {
+					System.out.println("helpMenuAboutItem clicked");
+				}
+			});
 		}
 	}
 	

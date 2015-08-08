@@ -38,9 +38,6 @@ public class GUIController extends Controller {
 	
 	private Display display;
 	
-	public GUIController() {
-	}
-	
 	@Override
 	public void init() {
 		Display.setAppName(Data.APP_NAME);

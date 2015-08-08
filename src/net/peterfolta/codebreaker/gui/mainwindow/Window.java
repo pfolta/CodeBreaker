@@ -25,11 +25,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.peterfolta.codebreaker.gui;
+package net.peterfolta.codebreaker.gui.mainwindow;
 
-import net.peterfolta.codebreaker.enums.ExitCode;
 import net.peterfolta.codebreaker.main.Data;
-import net.peterfolta.codebreaker.main.Main;
 import net.peterfolta.codebreaker.tools.WindowTools;
 
 import org.eclipse.swt.events.ShellEvent;
@@ -38,11 +36,11 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
 
-public class MainWindow {
+public class Window {
 	
 	private Shell mainShell;
 	
-	public MainWindow(Display display) {
+	public Window(Display display) {
 		mainShell = new Shell(display);
 		
 		mainShell.setText(Data.APP_NAME);
@@ -52,7 +50,7 @@ public class MainWindow {
 			}
 
 			public void shellClosed(ShellEvent event) {
-				Main.exit(ExitCode.OK);
+				event.doit = false;
 			}
 
 			public void shellDeactivated(ShellEvent event) {
