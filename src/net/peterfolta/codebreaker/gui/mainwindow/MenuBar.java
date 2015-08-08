@@ -72,6 +72,14 @@ public class MenuBar {
 		
 		gameMenuNewGameItem = new MenuItem(gameMenu, SWT.PUSH);
 		gameMenuNewGameItem.setText("New Game");
+		
+		if (Platform.isMac()) {
+			gameMenuNewGameItem.setAccelerator(SWT.COMMAND | 'N');
+		} else {
+			gameMenuNewGameItem.setText(gameMenuNewGameItem.getText() + "\tCtrl+N");
+			gameMenuNewGameItem.setAccelerator(SWT.CTRL + 'N');
+		}
+		
 		gameMenuNewGameItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				System.out.println("gameMenuNewGameItem clicked");
@@ -124,8 +132,15 @@ public class MenuBar {
 		helpMenuItem.setMenu(helpMenu);
 		
 		helpMenuHelpItem = new MenuItem(helpMenu, SWT.PUSH);
-		helpMenuHelpItem.setText("Help\tF1");
-		helpMenuHelpItem.setAccelerator(SWT.F1);
+		helpMenuHelpItem.setText("Help");
+		
+		if (Platform.isMac()) {
+			helpMenuHelpItem.setAccelerator(SWT.COMMAND | '?');
+		} else {
+			helpMenuHelpItem.setText(helpMenuHelpItem.getText() + "\tF1");
+			helpMenuHelpItem.setAccelerator(SWT.F1);
+		}
+		
 		helpMenuHelpItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				System.out.println("helpMenuHelpItem clicked");
