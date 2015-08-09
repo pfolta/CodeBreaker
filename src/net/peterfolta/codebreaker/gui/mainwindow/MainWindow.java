@@ -6,7 +6,7 @@
  * Version:				0.0.1
  * Website:				http://www.peterfolta.net/software/codebreaker
  * 
- * File:				Window.java
+ * File:				MainWindow.java
  * Created:				2015/8/6
  * Last modified:		2015/8/9
  * Author:				Peter Folta <mail@peterfolta.net>
@@ -37,13 +37,13 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
 
-public class Window {
+public class MainWindow {
 	
 	private Display display;
 	
 	private Shell mainShell;
 	
-	public Window(Display display, MainWindowController mainWindowController) {
+	public MainWindow(Display display, MainWindowController mainWindowController) {
 		this.display = display;
 		
 		mainShell = new Shell(this.display);

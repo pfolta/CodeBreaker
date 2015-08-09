@@ -6,7 +6,7 @@
  * Version:				0.0.1
  * Website:				http://www.peterfolta.net/software/codebreaker
  * 
- * File:				MenuBar.java
+ * File:				MainMenuBar.java
  * Created:				2015/8/7
  * Last modified:		2015/8/9
  * Author:				Peter Folta <mail@peterfolta.net>
@@ -39,7 +39,7 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
 
-public class MenuBar {
+public class MainMenuBar {
 	
 	private Display display;
 	private MainWindowController mainWindowController;
@@ -59,7 +59,7 @@ public class MenuBar {
 	private MenuItem helpMenuHelpItem;
 	private MenuItem helpMenuAboutItem;
 	
-	public MenuBar(Display display, MainWindowController mainWindowController, Shell parentShell) {
+	public MainMenuBar(Display display, MainWindowController mainWindowController, Shell parentShell) {
 		this.display = display;
 		this.mainWindowController = mainWindowController;
 		this.parentShell = parentShell;
@@ -152,7 +152,7 @@ public class MenuBar {
 		
 		helpMenuHelpItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
-				MenuBar.this.mainWindowController.showHelpWindow();
+				MainMenuBar.this.mainWindowController.showHelpWindow();
 			}
 		});
 		

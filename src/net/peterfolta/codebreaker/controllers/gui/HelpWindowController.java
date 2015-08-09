@@ -27,7 +27,8 @@
 
 package net.peterfolta.codebreaker.controllers.gui;
 
-import net.peterfolta.codebreaker.gui.helpwindow.Window;
+import net.peterfolta.codebreaker.gui.helpwindow.HelpToolBar;
+import net.peterfolta.codebreaker.gui.helpwindow.HelpWindow;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -36,12 +37,14 @@ public class HelpWindowController {
 	
 	private Display display;
 	
-	private Window helpWindow;
+	private HelpWindow helpWindow;
+	private HelpToolBar helpToolBar;
 	
 	public HelpWindowController(Display display, Shell mainShell) {
 		this.display = display;
 		
-		helpWindow = new Window(this.display, mainShell);
+		helpWindow = new HelpWindow(this.display, mainShell);
+		helpToolBar = new HelpToolBar(display, this, helpWindow.getHelpWindow());
 	}
 	
 	public void showHelpWindow() {

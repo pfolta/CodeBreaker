@@ -6,7 +6,7 @@
  * Version:				0.0.1
  * Website:				http://www.peterfolta.net/software/codebreaker
  * 
- * File:				Window.java
+ * File:				HelpWindow.java
  * Created:				2015/8/9
  * Last modified:		2015/8/9
  * Author:				Peter Folta <mail@peterfolta.net>
@@ -29,24 +29,30 @@ package net.peterfolta.codebreaker.gui.helpwindow;
 
 import net.peterfolta.codebreaker.tools.WindowTools;
 
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
-public class Window {
+public class HelpWindow {
 	
 	private Display display;
 	private Shell parentShell;
 	
 	private Shell helpShell;
 	
-	public Window(Display display, Shell parentShell) {
+	public HelpWindow(Display display, Shell parentShell) {
 		this.display = display;
 		this.parentShell = parentShell;
 		
 		helpShell = new Shell(this.display);
+		
 		helpShell.setText("Help");
 		
+		helpShell.setLayout(new FillLayout());
+		
+		helpShell.setMinimumSize(640, 480);
 		helpShell.pack();
+		
 		WindowTools.centerShellOnParent(helpShell, this.parentShell);
 	}
 	

@@ -6,9 +6,9 @@
  * Version:				0.0.1
  * Website:				http://www.peterfolta.net/software/codebreaker
  * 
- * File:				CocoaSystemMenu.java
+ * File:				MainCocoaSystemMenu.java
  * Created:				2015/8/8
- * Last modified:		2015/8/8
+ * Last modified:		2015/8/9
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -34,7 +34,7 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
 
-public class CocoaSystemMenu {
+public class MainCocoaSystemMenu {
 	
 	Menu cocoaSystemMenu;
 	
@@ -42,7 +42,7 @@ public class CocoaSystemMenu {
 	MenuItem preferencesItem;
 	MenuItem quitItem;
 	
-	public CocoaSystemMenu(Menu cocoaSystemMenu, Shell parent) {
+	public MainCocoaSystemMenu(Menu cocoaSystemMenu, Shell parent) {
 		this.cocoaSystemMenu = cocoaSystemMenu;
 		
 		this.cocoaSystemMenu.setEnabled(true);

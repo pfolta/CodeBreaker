@@ -27,9 +27,9 @@
 
 package net.peterfolta.codebreaker.controllers.gui;
 
-import net.peterfolta.codebreaker.gui.mainwindow.CocoaSystemMenu;
-import net.peterfolta.codebreaker.gui.mainwindow.MenuBar;
-import net.peterfolta.codebreaker.gui.mainwindow.Window;
+import net.peterfolta.codebreaker.gui.mainwindow.MainCocoaSystemMenu;
+import net.peterfolta.codebreaker.gui.mainwindow.MainMenuBar;
+import net.peterfolta.codebreaker.gui.mainwindow.MainWindow;
 import net.peterfolta.codebreaker.tools.Platform;
 
 import org.eclipse.swt.widgets.Display;
@@ -38,14 +38,14 @@ public class MainWindowController {
 	
 	private Display display;
 	
-	private Window mainWindow;
-	private MenuBar mainMenu;
+	private MainWindow mainWindow;
+	private MainMenuBar mainMenu;
 	
 	public MainWindowController(Display display) {
 		this.display = display;
 		
-		mainWindow = new Window(this.display, this);
-		mainMenu = new MenuBar(this.display, this, mainWindow.getMainWindow());
+		mainWindow = new MainWindow(this.display, this);
+		mainMenu = new MainMenuBar(this.display, this, mainWindow.getMainWindow());
 		
 		/*
 		 * Attach Menu Bar to Main Window unless running on Mac OS
@@ -58,7 +58,7 @@ public class MainWindowController {
 		 * 
 		 */
 		if (Platform.isMac()) {
-			new CocoaSystemMenu(this.display.getSystemMenu(), mainWindow.getMainWindow());
+			new MainCocoaSystemMenu(this.display.getSystemMenu(), mainWindow.getMainWindow());
 		}
 	}
 	
