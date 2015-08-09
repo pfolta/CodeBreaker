@@ -74,19 +74,17 @@ public class HelpToolBar {
 		
 		backToolItem = new ToolItem(toolBar, SWT.PUSH);
 		backToolItem.setText("Back");
-		backToolItem.setEnabled(false);
 		backToolItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
-				System.out.println("backToolItem clicked");
+				HelpToolBar.this.helpWindowController.goBack();
 			}
 		});
 		
 		forwardToolItem = new ToolItem(toolBar, SWT.PUSH);
 		forwardToolItem.setText("Forward");
-		forwardToolItem.setEnabled(false);
 		forwardToolItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
-				System.out.println("forwardToolItem clicked");
+				HelpToolBar.this.helpWindowController.goForward();
 			}
 		});
 		
@@ -97,6 +95,14 @@ public class HelpToolBar {
 				HelpToolBar.this.helpWindowController.goHome();
 			}
 		});
+	}
+	
+	public void setBackButtonEnabled(boolean enabled) {
+		backToolItem.setEnabled(enabled);
+	}
+	
+	public void setForwardButtonEnabled(boolean enabled) {
+		forwardToolItem.setEnabled(enabled);
 	}
 	
 }

@@ -31,12 +31,15 @@ import net.peterfolta.codebreaker.controllers.gui.HelpWindowController;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.browser.ProgressEvent;
+import org.eclipse.swt.browser.ProgressListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
 public class HelpBrowser {
 	
+	private HelpWindowController helpWindowController;
 	private Shell helpWindow;
 	
 	private Browser helpBrowser;
@@ -44,9 +47,19 @@ public class HelpBrowser {
 	private GridData gridData;
 	
 	public HelpBrowser(Display display, HelpWindowController helpWindowController, Shell helpWindow) {
+		this.helpWindowController = helpWindowController;
 		this.helpWindow = helpWindow;
 		
 		helpBrowser = new Browser(this.helpWindow, SWT.NONE);
+		
+		helpBrowser.addProgressListener(new ProgressListener() {
+			public void changed(ProgressEvent event) {
+			}
+
+			public void completed(ProgressEvent event) {
+				HelpBrowser.this.helpWindowController.completeNavigation();
+			}
+		});
 		
 		gridData = new GridData(GridData.FILL_BOTH);
 		helpBrowser.setLayoutData(gridData);

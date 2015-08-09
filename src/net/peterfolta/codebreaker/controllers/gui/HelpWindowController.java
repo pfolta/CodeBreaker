@@ -66,15 +66,20 @@ public class HelpWindowController {
 	}
 	
 	public void goBack() {
-		
+		helpBrowser.getBrowser().back();
 	}
 	
 	public void goForward() {
-		
+		helpBrowser.getBrowser().forward();
 	}
 	
 	public void goHome() {
 		helpBrowser.getBrowser().setUrl(homeURL);
+	}
+	
+	public void completeNavigation() {
+		helpToolBar.setBackButtonEnabled(helpBrowser.getBrowser().isBackEnabled());
+		helpToolBar.setForwardButtonEnabled(helpBrowser.getBrowser().isForwardEnabled());
 	}
 	
 }
