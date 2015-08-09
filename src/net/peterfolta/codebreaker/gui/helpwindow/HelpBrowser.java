@@ -6,8 +6,8 @@
  * Version:				0.0.1
  * Website:				http://www.peterfolta.net/software/codebreaker
  * 
- * File:				GUIController.java
- * Created:				2015/8/6
+ * File:				HelpBrowser.java
+ * Created:				2015/8/9
  * Last modified:		2015/8/9
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
@@ -25,47 +25,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.peterfolta.codebreaker.controllers.gui;
+package net.peterfolta.codebreaker.gui.helpwindow;
 
-import net.peterfolta.codebreaker.main.Data;
+import net.peterfolta.codebreaker.controllers.gui.HelpWindowController;
+import net.peterfolta.codebreaker.tools.ResourceLoader;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 
-public class GUIController {
+public class HelpBrowser {
 	
-	private MainWindowController mainWindowController;
-	private HelpWindowController helpWindowController;
+	private Shell helpWindow;
 	
-	private Display display;
+	private Browser helpBrowser;
 	
-	public GUIController() {
-		Display.setAppName(Data.APP_NAME);
-		Display.setAppVersion(Data.APP_VERSION);
+	private GridData gridData;
+	
+	public HelpBrowser(Display display, HelpWindowController helpWindowController, Shell helpWindow) {
+		this.helpWindow = helpWindow;
 		
-		display = Display.getDefault();
-	}
-	
-	public void dispose() {
-		display.dispose();
-	}
-	
-	public void showMainWindow() {
-		mainWindowController = new MainWindowController(this, display);
-		mainWindowController.showMainWindow();
+		helpBrowser = new Browser(this.helpWindow, SWT.NONE);
+		helpBrowser.setUrl(ResourceLoader.getHelp("en"));
 		
-		while (!display.isDisposed()) {
-			if (!display.readAndDispatch()) {
-				display.sleep();
-			}
-		}
-	}
-	
-	public void showHelpWindow() {
-		if (helpWindowController == null || helpWindowController.getHelpWindow().isDisposed()) {
-			helpWindowController = new HelpWindowController(display, mainWindowController.getMainWindow());
-		}
+		gridData = new GridData(GridData.FILL_BOTH);
+		helpBrowser.setLayoutData(gridData);
 		
-		helpWindowController.showHelpWindow();
+		helpBrowser.setFocus();
 	}
-	
 }

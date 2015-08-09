@@ -6,8 +6,8 @@
  * Version:				0.0.1
  * Website:				http://www.peterfolta.net/software/codebreaker
  * 
- * File:				GUIController.java
- * Created:				2015/8/6
+ * File:				ResourceLoader.java
+ * Created:				2015/8/9
  * Last modified:		2015/8/9
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
@@ -25,47 +25,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.peterfolta.codebreaker.controllers.gui;
+package net.peterfolta.codebreaker.tools;
 
-import net.peterfolta.codebreaker.main.Data;
-
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
-public class GUIController {
+public class ResourceLoader {
 	
-	private MainWindowController mainWindowController;
-	private HelpWindowController helpWindowController;
-	
-	private Display display;
-	
-	public GUIController() {
-		Display.setAppName(Data.APP_NAME);
-		Display.setAppVersion(Data.APP_VERSION);
+	public static Image loadImage(Display display, String fileName) {
+		Image image = null;
 		
-		display = Display.getDefault();
-	}
-	
-	public void dispose() {
-		display.dispose();
-	}
-	
-	public void showMainWindow() {
-		mainWindowController = new MainWindowController(this, display);
-		mainWindowController.showMainWindow();
-		
-		while (!display.isDisposed()) {
-			if (!display.readAndDispatch()) {
-				display.sleep();
-			}
+		try {
+			image = new Image(display, "res/img/" + fileName);
+		} catch (Exception exception) {
+			exception.printStackTrace();
 		}
+
+		return image;
 	}
 	
-	public void showHelpWindow() {
-		if (helpWindowController == null || helpWindowController.getHelpWindow().isDisposed()) {
-			helpWindowController = new HelpWindowController(display, mainWindowController.getMainWindow());
-		}
-		
-		helpWindowController.showHelpWindow();
+	public static String getHelp(String language) {
+		return "file:///" + System.getProperty("user.dir") + "/res/hlp/" + language + "/index.html";
 	}
 	
 }

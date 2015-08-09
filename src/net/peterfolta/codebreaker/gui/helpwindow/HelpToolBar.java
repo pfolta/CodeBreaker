@@ -32,6 +32,7 @@ import net.peterfolta.codebreaker.tools.Platform;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
@@ -42,29 +43,32 @@ import org.eclipse.swt.widgets.ToolItem;
 public class HelpToolBar {
 	
 	private Display display;
-	private HelpWindowController helpWindowController;
-	private Shell parentShell;
+	private Shell helpWindow;
 	
 	private ToolBar toolBar;
+	
+	private GridData gridData;
 	
 	private ToolItem backToolItem;
 	private ToolItem forwardToolItem;
 	private ToolItem homeToolItem;
 	
-	public HelpToolBar(Display display, HelpWindowController helpWindowController, Shell parentShell) {
+	public HelpToolBar(Display display, HelpWindowController helpWindowController, Shell helpWindow) {
 		this.display = display;
-		this.helpWindowController = helpWindowController;
-		this.parentShell = parentShell;
+		this.helpWindow = helpWindow;
 		
 		/*
 		 * Integrate Tool Bar and Window Frame on Mac OS 
 		 */
 		if (Platform.isMac()) {
-			toolBar = parentShell.getToolBar();
+			toolBar = this.helpWindow.getToolBar();
 		} else {
-			toolBar = new ToolBar(this.parentShell, SWT.FLAT);
+			toolBar = new ToolBar(this.helpWindow, SWT.FLAT);
 			toolBar.setBackground(new Color(this.display, 255, 255, 255));
 		}
+		
+		gridData = new GridData(GridData.FILL_HORIZONTAL);
+		toolBar.setLayoutData(gridData);
 		
 		backToolItem = new ToolItem(toolBar, SWT.PUSH);
 		backToolItem.setText("Back");

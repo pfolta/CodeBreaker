@@ -29,7 +29,7 @@ package net.peterfolta.codebreaker.gui.helpwindow;
 
 import net.peterfolta.codebreaker.tools.WindowTools;
 
-import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
@@ -40,6 +40,8 @@ public class HelpWindow {
 	
 	private Shell helpShell;
 	
+	private GridLayout gridLayout;
+	
 	public HelpWindow(Display display, Shell parentShell) {
 		this.display = display;
 		this.parentShell = parentShell;
@@ -48,10 +50,15 @@ public class HelpWindow {
 		
 		helpShell.setText("Help");
 		
-		helpShell.setLayout(new FillLayout());
+		gridLayout = new GridLayout();
+		gridLayout.numColumns = 1;
+		gridLayout.marginWidth = 0;
+		gridLayout.marginHeight = 0;
+		gridLayout.horizontalSpacing = 0;
+		gridLayout.verticalSpacing = 0;
+		helpShell.setLayout(gridLayout);
 		
-		helpShell.setMinimumSize(640, 480);
-		helpShell.pack();
+		helpShell.setSize(640, 480);
 		
 		WindowTools.centerShellOnParent(helpShell, this.parentShell);
 	}
