@@ -51,4 +51,8 @@ public class HelpWindowController {
 		helpWindow.show();
 	}
 	
+	public Shell getHelpWindow() {
+		return helpWindow.getHelpWindow();
+	}
+	
 }

@@ -34,6 +34,7 @@ import org.eclipse.swt.widgets.Display;
 public class GUIController {
 	
 	private MainWindowController mainWindowController;
+	private HelpWindowController helpWindowController;
 	
 	private Display display;
 	
@@ -49,7 +50,7 @@ public class GUIController {
 	}
 	
 	public void showMainWindow() {
-		mainWindowController = new MainWindowController(display);
+		mainWindowController = new MainWindowController(this, display);
 		mainWindowController.showMainWindow();
 		
 		while (!display.isDisposed()) {
@@ -57,6 +58,14 @@ public class GUIController {
 				display.sleep();
 			}
 		}
+	}
+	
+	public void showHelpWindow() {
+		if (helpWindowController == null) {
+			helpWindowController = new HelpWindowController(display, mainWindowController.getMainWindow());
+		}
+		
+		helpWindowController.showHelpWindow();
 	}
 	
 }

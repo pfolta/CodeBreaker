@@ -33,15 +33,18 @@ import net.peterfolta.codebreaker.gui.mainwindow.MainWindow;
 import net.peterfolta.codebreaker.tools.Platform;
 
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 
 public class MainWindowController {
 	
+	private GUIController guiController;
 	private Display display;
 	
 	private MainWindow mainWindow;
-	private MainMenuBar mainMenu;
+	private MainMenuBar mainMenu; 
 	
-	public MainWindowController(Display display) {
+	public MainWindowController(GUIController guiController, Display display) {
+		this.guiController = guiController;
 		this.display = display;
 		
 		mainWindow = new MainWindow(this.display, this);
@@ -66,9 +69,12 @@ public class MainWindowController {
 		mainWindow.show();
 	}
 	
+	public Shell getMainWindow() {
+		return mainWindow.getMainWindow();
+	}
+	
 	public void showHelpWindow() {
-		HelpWindowController helpWindowController = new HelpWindowController(display, mainWindow.getMainWindow());
-		helpWindowController.showHelpWindow();
+		guiController.showHelpWindow();
 	}
 	
 }
