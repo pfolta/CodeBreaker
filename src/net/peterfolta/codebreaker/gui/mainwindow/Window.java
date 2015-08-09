@@ -8,7 +8,7 @@
  * 
  * File:				MainWindow.java
  * Created:				2015/8/6
- * Last modified:		2015/8/8
+ * Last modified:		2015/8/9
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -32,17 +32,22 @@ import net.peterfolta.codebreaker.tools.WindowTools;
 
 import org.eclipse.swt.events.ShellEvent;
 import org.eclipse.swt.events.ShellListener;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
 
 public class Window {
 	
+	private Display display;
+	
 	private Shell mainShell;
 	
 	public Window(Display display) {
-		mainShell = new Shell(display);
+		this.display = display;
 		
+		mainShell = new Shell(this.display);
+		mainShell.setLayout(new FillLayout());
 		mainShell.setText(Data.APP_NAME);
 		
 		mainShell.addShellListener(new ShellListener() {
@@ -65,7 +70,7 @@ public class Window {
 		
 		drawBoard();
 		
-		WindowTools.centerShellOnPrimaryMonitor(display, mainShell);
+		WindowTools.centerShellOnPrimaryMonitor(this.display, mainShell);
 	}
 	
 	public Shell getMainWindow() {
