@@ -66,6 +66,7 @@ public class GUIController {
 		}
 		
 		helpWindowController.showHelpWindow();
+		helpWindowController.goHome();
 	}
 	
 }

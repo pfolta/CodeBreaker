@@ -30,6 +30,7 @@ package net.peterfolta.codebreaker.controllers.gui;
 import net.peterfolta.codebreaker.gui.helpwindow.HelpBrowser;
 import net.peterfolta.codebreaker.gui.helpwindow.HelpToolBar;
 import net.peterfolta.codebreaker.gui.helpwindow.HelpWindow;
+import net.peterfolta.codebreaker.tools.ResourceLoader;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -38,14 +39,22 @@ public class HelpWindowController {
 	
 	private Display display;
 	
+	private String homeURL;
+	
 	private HelpWindow helpWindow;
+	private HelpToolBar helpToolBar;
+	private HelpBrowser helpBrowser;
 	
 	public HelpWindowController(Display display, Shell mainShell) {
 		this.display = display;
 		
+		homeURL = ResourceLoader.getHelp("en");
+		
 		helpWindow = new HelpWindow(this.display, mainShell);
-		new HelpToolBar(display, this, helpWindow.getHelpWindow());
-		new HelpBrowser(display, this,helpWindow.getHelpWindow());
+		helpToolBar = new HelpToolBar(display, this, helpWindow.getHelpWindow());
+		helpBrowser = new HelpBrowser(display, this,helpWindow.getHelpWindow());
+		
+		goHome();
 	}
 	
 	public void showHelpWindow() {
@@ -54,6 +63,18 @@ public class HelpWindowController {
 	
 	public Shell getHelpWindow() {
 		return helpWindow.getHelpWindow();
+	}
+	
+	public void goBack() {
+		
+	}
+	
+	public void goForward() {
+		
+	}
+	
+	public void goHome() {
+		helpBrowser.getBrowser().setUrl(homeURL);
 	}
 	
 }

@@ -28,7 +28,6 @@
 package net.peterfolta.codebreaker.gui.helpwindow;
 
 import net.peterfolta.codebreaker.controllers.gui.HelpWindowController;
-import net.peterfolta.codebreaker.tools.ResourceLoader;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
@@ -48,11 +47,15 @@ public class HelpBrowser {
 		this.helpWindow = helpWindow;
 		
 		helpBrowser = new Browser(this.helpWindow, SWT.NONE);
-		helpBrowser.setUrl(ResourceLoader.getHelp("en"));
 		
 		gridData = new GridData(GridData.FILL_BOTH);
 		helpBrowser.setLayoutData(gridData);
 		
 		helpBrowser.setFocus();
 	}
+	
+	public Browser getBrowser() {
+		return helpBrowser;
+	}
+	
 }

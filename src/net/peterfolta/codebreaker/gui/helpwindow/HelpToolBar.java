@@ -43,6 +43,7 @@ import org.eclipse.swt.widgets.ToolItem;
 public class HelpToolBar {
 	
 	private Display display;
+	private HelpWindowController helpWindowController;
 	private Shell helpWindow;
 	
 	private ToolBar toolBar;
@@ -55,6 +56,7 @@ public class HelpToolBar {
 	
 	public HelpToolBar(Display display, HelpWindowController helpWindowController, Shell helpWindow) {
 		this.display = display;
+		this.helpWindowController = helpWindowController;
 		this.helpWindow = helpWindow;
 		
 		/*
@@ -92,7 +94,7 @@ public class HelpToolBar {
 		homeToolItem.setText("Home");
 		homeToolItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
-				System.out.println("homeToolItem clicked");
+				HelpToolBar.this.helpWindowController.goHome();
 			}
 		});
 	}
