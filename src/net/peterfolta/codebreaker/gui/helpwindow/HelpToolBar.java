@@ -35,6 +35,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.ToolBar;
@@ -50,9 +51,15 @@ public class HelpToolBar {
 	
 	private GridData gridData;
 	
+	private Label separatorLabel;
+	private ToolItem separatorToolItem;
+	
 	private ToolItem backToolItem;
 	private ToolItem forwardToolItem;
+	
 	private ToolItem homeToolItem;
+	
+	private ToolItem printToolItem;
 	
 	public HelpToolBar(Display display, HelpWindowController helpWindowController, Shell helpWindow) {
 		this.display = display;
@@ -72,7 +79,7 @@ public class HelpToolBar {
 		gridData = new GridData(GridData.FILL_HORIZONTAL);
 		toolBar.setLayoutData(gridData);
 		
-		backToolItem = new ToolItem(toolBar, SWT.PUSH);
+		backToolItem = new ToolItem(toolBar, SWT.PUSH | SWT.BORDER);
 		backToolItem.setText("Back");
 		backToolItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
@@ -88,11 +95,39 @@ public class HelpToolBar {
 			}
 		});
 		
+		separatorLabel = new Label(toolBar, SWT.NONE);
+		
+		if (!Platform.isMac()) {
+			separatorLabel.setBackground(new Color(this.display, 255, 255, 255));			
+		}
+		
+		separatorToolItem = new ToolItem(toolBar, SWT.SEPARATOR);
+		separatorToolItem.setControl(separatorLabel);
+		separatorToolItem.setWidth(15);
+		
 		homeToolItem = new ToolItem(toolBar, SWT.PUSH);
 		homeToolItem.setText("Home");
 		homeToolItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				HelpToolBar.this.helpWindowController.goHome();
+			}
+		});
+
+		separatorLabel = new Label(toolBar, SWT.NONE);
+		
+		if (!Platform.isMac()) {
+			separatorLabel.setBackground(new Color(this.display, 255, 255, 255));			
+		}
+		
+		separatorToolItem = new ToolItem(toolBar, SWT.SEPARATOR);
+		separatorToolItem.setControl(separatorLabel);
+		separatorToolItem.setWidth(15);
+		
+		printToolItem = new ToolItem(toolBar, SWT.PUSH);
+		printToolItem.setText("Print");
+		printToolItem.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event event) {
+				HelpToolBar.this.helpWindowController.print();
 			}
 		});
 	}

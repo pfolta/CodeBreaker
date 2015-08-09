@@ -27,8 +27,10 @@
 
 package net.peterfolta.codebreaker.gui.helpwindow;
 
+import net.peterfolta.codebreaker.controllers.gui.HelpWindowController;
 import net.peterfolta.codebreaker.tools.WindowTools;
 
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -42,7 +44,7 @@ public class HelpWindow {
 	
 	private GridLayout gridLayout;
 	
-	public HelpWindow(Display display, Shell parentShell) {
+	public HelpWindow(Display display, HelpWindowController helpWindowController, Shell parentShell) {
 		this.display = display;
 		this.parentShell = parentShell;
 		
@@ -50,15 +52,17 @@ public class HelpWindow {
 		
 		helpShell.setText("Help");
 		
+		helpShell.setBackground(new Color(this.display, 255, 255, 255));
+		
 		gridLayout = new GridLayout();
 		gridLayout.numColumns = 1;
-		gridLayout.marginWidth = 0;
-		gridLayout.marginHeight = 0;
+		gridLayout.marginWidth = 10;
+		gridLayout.marginHeight = 10;
 		gridLayout.horizontalSpacing = 0;
 		gridLayout.verticalSpacing = 0;
 		helpShell.setLayout(gridLayout);
 		
-		helpShell.setSize(640, 480);
+		helpShell.setSize(600, 800);
 		
 		WindowTools.centerShellOnParent(helpShell, this.parentShell);
 	}

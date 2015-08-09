@@ -50,9 +50,9 @@ public class HelpWindowController {
 		
 		homeURL = ResourceLoader.getHelp("en");
 		
-		helpWindow = new HelpWindow(this.display, mainShell);
-		helpToolBar = new HelpToolBar(display, this, helpWindow.getHelpWindow());
-		helpBrowser = new HelpBrowser(display, this,helpWindow.getHelpWindow());
+		helpWindow = new HelpWindow(this.display, this, mainShell);
+		helpToolBar = new HelpToolBar(this.display, this, helpWindow.getHelpWindow());
+		helpBrowser = new HelpBrowser(this.display, this,helpWindow.getHelpWindow());
 		
 		goHome();
 	}
@@ -75,6 +75,10 @@ public class HelpWindowController {
 	
 	public void goHome() {
 		helpBrowser.getBrowser().setUrl(homeURL);
+	}
+	
+	public void print() {
+		helpBrowser.getBrowser().execute("javascript:window.print();");
 	}
 	
 	public void completeNavigation() {
