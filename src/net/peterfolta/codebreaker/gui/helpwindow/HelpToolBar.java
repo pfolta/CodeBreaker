@@ -29,6 +29,7 @@ package net.peterfolta.codebreaker.gui.helpwindow;
 
 import net.peterfolta.codebreaker.controllers.gui.HelpWindowController;
 import net.peterfolta.codebreaker.tools.Platform;
+import net.peterfolta.codebreaker.tools.ResourceLoader;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -82,7 +83,10 @@ public class HelpToolBar {
 		toolBar.setLayoutData(gridData);
 		
 		backToolItem = new ToolItem(toolBar, SWT.PUSH | SWT.BORDER);
-		backToolItem.setText("Back");
+		backToolItem.setImage(ResourceLoader.loadImage(display, "hlp/back_default.png"));
+		backToolItem.setHotImage(ResourceLoader.loadImage(display, "hlp/back_hot.png"));
+		backToolItem.setDisabledImage(ResourceLoader.loadImage(display, "hlp/back_disabled.png"));
+		backToolItem.setToolTipText("Back");
 		backToolItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				HelpToolBar.this.helpWindowController.goBack();
@@ -90,7 +94,10 @@ public class HelpToolBar {
 		});
 		
 		forwardToolItem = new ToolItem(toolBar, SWT.PUSH);
-		forwardToolItem.setText("Forward");
+		forwardToolItem.setImage(ResourceLoader.loadImage(display, "hlp/forward_default.png"));
+		forwardToolItem.setHotImage(ResourceLoader.loadImage(display, "hlp/forward_hot.png"));
+		forwardToolItem.setDisabledImage(ResourceLoader.loadImage(display, "hlp/forward_disabled.png"));
+		forwardToolItem.setToolTipText("Forward");
 		forwardToolItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				HelpToolBar.this.helpWindowController.goForward();
@@ -105,10 +112,13 @@ public class HelpToolBar {
 		
 		separatorToolItem = new ToolItem(toolBar, SWT.SEPARATOR);
 		separatorToolItem.setControl(separatorLabel);
-		separatorToolItem.setWidth(15);
+		separatorToolItem.setWidth(25);
 		
 		homeToolItem = new ToolItem(toolBar, SWT.PUSH);
-		homeToolItem.setText("Home");
+		homeToolItem.setImage(ResourceLoader.loadImage(display, "hlp/home_default.png"));
+		homeToolItem.setHotImage(ResourceLoader.loadImage(display, "hlp/home_hot.png"));
+		homeToolItem.setDisabledImage(ResourceLoader.loadImage(display, "hlp/home_disabled.png"));
+		homeToolItem.setToolTipText("Home");
 		homeToolItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				HelpToolBar.this.helpWindowController.goHome();
@@ -123,10 +133,13 @@ public class HelpToolBar {
 		
 		separatorToolItem = new ToolItem(toolBar, SWT.SEPARATOR);
 		separatorToolItem.setControl(separatorLabel);
-		separatorToolItem.setWidth(15);
+		separatorToolItem.setWidth(25);
 		
 		printToolItem = new ToolItem(toolBar, SWT.PUSH);
-		printToolItem.setText("Print");
+		printToolItem.setImage(ResourceLoader.loadImage(display, "hlp/print_default.png"));
+		printToolItem.setHotImage(ResourceLoader.loadImage(display, "hlp/print_hot.png"));
+		printToolItem.setDisabledImage(ResourceLoader.loadImage(display, "hlp/print_disabled.png"));
+		printToolItem.setToolTipText("Print");
 		printToolItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				HelpToolBar.this.helpWindowController.print();
