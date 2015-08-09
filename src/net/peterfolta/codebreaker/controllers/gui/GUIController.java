@@ -8,7 +8,7 @@
  * 
  * File:				GUIController.java
  * Created:				2015/8/6
- * Last modified:		2015/8/8
+ * Last modified:		2015/8/9
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -27,19 +27,17 @@
 
 package net.peterfolta.codebreaker.controllers.gui;
 
-import org.eclipse.swt.widgets.Display;
-
-import net.peterfolta.codebreaker.common.Controller;
 import net.peterfolta.codebreaker.main.Data;
 
-public class GUIController extends Controller {
+import org.eclipse.swt.widgets.Display;
+
+public class GUIController {
 	
 	private MainWindowController mainWindowController;
 	
 	private Display display;
 	
-	@Override
-	public void init() {
+	public GUIController() {
 		Display.setAppName(Data.APP_NAME);
 		Display.setAppVersion(Data.APP_VERSION);
 		
@@ -51,7 +49,7 @@ public class GUIController extends Controller {
 	}
 	
 	public void showMainWindow() {
-		mainWindowController = new MainWindowController();
+		mainWindowController = new MainWindowController(display);
 		mainWindowController.showMainWindow();
 		
 		while (!display.isDisposed()) {

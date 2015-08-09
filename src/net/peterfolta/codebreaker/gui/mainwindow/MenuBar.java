@@ -6,9 +6,9 @@
  * Version:				0.0.1
  * Website:				http://www.peterfolta.net/software/codebreaker
  * 
- * File:				MainMenu.java
+ * File:				MenuBar.java
  * Created:				2015/8/7
- * Last modified:		2015/8/8
+ * Last modified:		2015/8/9
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -27,6 +27,7 @@
 
 package net.peterfolta.codebreaker.gui.mainwindow;
 
+import net.peterfolta.codebreaker.controllers.gui.MainWindowController;
 import net.peterfolta.codebreaker.main.Data;
 import net.peterfolta.codebreaker.tools.Platform;
 
@@ -39,6 +40,10 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
 
 public class MenuBar {
+	
+	private Display display;
+	private MainWindowController mainWindowController;
+	private Shell parentShell;
 	
 	private Menu mainMenu;
 	
@@ -54,14 +59,18 @@ public class MenuBar {
 	private MenuItem helpMenuHelpItem;
 	private MenuItem helpMenuAboutItem;
 	
-	public MenuBar(Display display, Shell parent) {
+	public MenuBar(Display display, MainWindowController mainWindowController, Shell parentShell) {
+		this.display = display;
+		this.mainWindowController = mainWindowController;
+		this.parentShell = parentShell;
+		
 		/*
 		 * Undock Menu Bar on Mac OS
 		 */
 		if (Platform.isMac()) {
-			mainMenu = display.getMenuBar();
+			mainMenu = this.display.getMenuBar();
 		} else {
-			mainMenu = new Menu(parent, SWT.BAR);			
+			mainMenu = new Menu(this.parentShell, SWT.BAR);			
 		}
 		
 		gameMenuItem = new MenuItem(mainMenu, SWT.CASCADE);
@@ -143,7 +152,7 @@ public class MenuBar {
 		
 		helpMenuHelpItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
-				System.out.println("helpMenuHelpItem clicked");
+				MenuBar.this.mainWindowController.showHelpWindow();
 			}
 		});
 		

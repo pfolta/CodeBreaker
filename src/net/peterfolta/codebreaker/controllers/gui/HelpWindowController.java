@@ -6,8 +6,8 @@
  * Version:				0.0.1
  * Website:				http://www.peterfolta.net/software/codebreaker
  * 
- * File:				MainWindowController.java
- * Created:				2015/8/6
+ * File:				HelpWindowController.java
+ * Created:				2015/8/9
  * Last modified:		2015/8/9
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
@@ -27,48 +27,25 @@
 
 package net.peterfolta.codebreaker.controllers.gui;
 
-import net.peterfolta.codebreaker.gui.mainwindow.CocoaSystemMenu;
-import net.peterfolta.codebreaker.gui.mainwindow.MenuBar;
-import net.peterfolta.codebreaker.gui.mainwindow.Window;
-import net.peterfolta.codebreaker.tools.Platform;
+import net.peterfolta.codebreaker.gui.helpwindow.Window;
 
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 
-public class MainWindowController {
+public class HelpWindowController {
 	
 	private Display display;
 	
-	private Window mainWindow;
-	private MenuBar mainMenu;
+	private Window helpWindow;
 	
-	public MainWindowController(Display display) {
+	public HelpWindowController(Display display, Shell mainShell) {
 		this.display = display;
 		
-		mainWindow = new Window(this.display, this);
-		mainMenu = new MenuBar(this.display, this, mainWindow.getMainWindow());
-		
-		/*
-		 * Attach Menu Bar to Main Window unless running on Mac OS
-		 */
-		if (!Platform.isMac()) {
-			mainWindow.setMenuBar(mainMenu.getMainMenu());			
-		}
-		
-		/*
-		 * 
-		 */
-		if (Platform.isMac()) {
-			new CocoaSystemMenu(this.display.getSystemMenu(), mainWindow.getMainWindow());
-		}
-	}
-	
-	public void showMainWindow() {
-		mainWindow.show();
+		helpWindow = new Window(this.display, mainShell);
 	}
 	
 	public void showHelpWindow() {
-		HelpWindowController helpWindowController = new HelpWindowController(display, mainWindow.getMainWindow());
-		helpWindowController.showHelpWindow();
+		helpWindow.show();
 	}
 	
 }

@@ -6,7 +6,7 @@
  * Version:				0.0.1
  * Website:				http://www.peterfolta.net/software/codebreaker
  * 
- * File:				MainWindow.java
+ * File:				Window.java
  * Created:				2015/8/6
  * Last modified:		2015/8/9
  * Author:				Peter Folta <mail@peterfolta.net>
@@ -27,12 +27,12 @@
 
 package net.peterfolta.codebreaker.gui.mainwindow;
 
+import net.peterfolta.codebreaker.controllers.gui.MainWindowController;
 import net.peterfolta.codebreaker.main.Data;
 import net.peterfolta.codebreaker.tools.WindowTools;
 
 import org.eclipse.swt.events.ShellEvent;
 import org.eclipse.swt.events.ShellListener;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
@@ -43,11 +43,10 @@ public class Window {
 	
 	private Shell mainShell;
 	
-	public Window(Display display) {
+	public Window(Display display, MainWindowController mainWindowController) {
 		this.display = display;
 		
 		mainShell = new Shell(this.display);
-		mainShell.setLayout(new FillLayout());
 		mainShell.setText(Data.APP_NAME);
 		
 		mainShell.addShellListener(new ShellListener() {

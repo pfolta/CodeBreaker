@@ -8,7 +8,7 @@
  * 
  * File:				GameController.java
  * Created:				2015/8/7
- * Last modified:		2015/8/7
+ * Last modified:		2015/8/9
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -27,20 +27,15 @@
 
 package net.peterfolta.codebreaker.controllers.game;
 
-import net.peterfolta.codebreaker.common.Controller;
 import net.peterfolta.codebreaker.model.Code;
 import net.peterfolta.codebreaker.model.Feedback;
 import net.peterfolta.codebreaker.model.Game;
 
-public class GameController extends Controller {
+public class GameController {
 	
 	private Game game;
 	
 	public GameController() {
-	}
-	
-	@Override
-	public void init() {
 		game = new Game();
 	}
 	

@@ -6,9 +6,9 @@
  * Version:				0.0.1
  * Website:				http://www.peterfolta.net/software/codebreaker
  * 
- * File:				Controller.java
- * Created:				2015/8/6
- * Last modified:		2015/8/6
+ * File:				Window.java
+ * Created:				2015/8/9
+ * Last modified:		2015/8/9
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -25,14 +25,37 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.peterfolta.codebreaker.common;
+package net.peterfolta.codebreaker.gui.helpwindow;
 
-public abstract class Controller {
+import net.peterfolta.codebreaker.tools.WindowTools;
+
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+
+public class Window {
 	
-	public Controller() {
-		init();
+	private Display display;
+	private Shell parentShell;
+	
+	private Shell helpShell;
+	
+	public Window(Display display, Shell parentShell) {
+		this.display = display;
+		this.parentShell = parentShell;
+		
+		helpShell = new Shell(this.display);
+		helpShell.setText("Help");
+		
+		helpShell.pack();
+		WindowTools.centerShellOnParent(helpShell, this.parentShell);
 	}
 	
-	public abstract void init();
+	public Shell getHelpWindow() {
+		return helpShell;
+	}
+	
+	public void show() {
+		helpShell.open();
+	}
 	
 }
