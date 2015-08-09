@@ -62,6 +62,7 @@ public class HelpBrowser {
 		});
 		
 		gridData = new GridData(GridData.FILL_BOTH);
+		gridData.verticalIndent = 10;
 		helpBrowser.setLayoutData(gridData);
 		
 		helpBrowser.setFocus();

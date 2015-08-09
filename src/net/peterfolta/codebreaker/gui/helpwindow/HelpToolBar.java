@@ -77,6 +77,8 @@ public class HelpToolBar {
 		}
 		
 		gridData = new GridData(GridData.FILL_HORIZONTAL);
+		gridData.horizontalIndent = 10;
+		gridData.verticalIndent = 10;
 		toolBar.setLayoutData(gridData);
 		
 		backToolItem = new ToolItem(toolBar, SWT.PUSH | SWT.BORDER);

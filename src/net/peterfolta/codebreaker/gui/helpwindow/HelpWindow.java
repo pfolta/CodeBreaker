@@ -56,8 +56,8 @@ public class HelpWindow {
 		
 		gridLayout = new GridLayout();
 		gridLayout.numColumns = 1;
-		gridLayout.marginWidth = 10;
-		gridLayout.marginHeight = 10;
+		gridLayout.marginWidth = 0;
+		gridLayout.marginHeight = 0;
 		gridLayout.horizontalSpacing = 0;
 		gridLayout.verticalSpacing = 0;
 		helpShell.setLayout(gridLayout);
