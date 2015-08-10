@@ -8,7 +8,7 @@
  * 
  * File:				HelpToolBar.java
  * Created:				2015/8/9
- * Last modified:		2015/8/9
+ * Last modified:		2015/8/10
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -28,6 +28,7 @@
 package net.peterfolta.codebreaker.gui.helpwindow;
 
 import net.peterfolta.codebreaker.controllers.gui.HelpWindowController;
+import net.peterfolta.codebreaker.main.Main;
 import net.peterfolta.codebreaker.tools.Platform;
 import net.peterfolta.codebreaker.tools.ResourceLoader;
 
@@ -86,7 +87,7 @@ public class HelpToolBar {
 		backToolItem.setImage(ResourceLoader.loadImage(display, "hlp/back_default.png"));
 		backToolItem.setHotImage(ResourceLoader.loadImage(display, "hlp/back_hot.png"));
 		backToolItem.setDisabledImage(ResourceLoader.loadImage(display, "hlp/back_disabled.png"));
-		backToolItem.setToolTipText("Back");
+		backToolItem.setToolTipText(Main.getLanguage().getContent("Back"));
 		backToolItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				HelpToolBar.this.helpWindowController.goBack();
@@ -97,7 +98,7 @@ public class HelpToolBar {
 		forwardToolItem.setImage(ResourceLoader.loadImage(display, "hlp/forward_default.png"));
 		forwardToolItem.setHotImage(ResourceLoader.loadImage(display, "hlp/forward_hot.png"));
 		forwardToolItem.setDisabledImage(ResourceLoader.loadImage(display, "hlp/forward_disabled.png"));
-		forwardToolItem.setToolTipText("Forward");
+		forwardToolItem.setToolTipText(Main.getLanguage().getContent("Forward"));
 		forwardToolItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				HelpToolBar.this.helpWindowController.goForward();
@@ -118,7 +119,7 @@ public class HelpToolBar {
 		homeToolItem.setImage(ResourceLoader.loadImage(display, "hlp/home_default.png"));
 		homeToolItem.setHotImage(ResourceLoader.loadImage(display, "hlp/home_hot.png"));
 		homeToolItem.setDisabledImage(ResourceLoader.loadImage(display, "hlp/home_disabled.png"));
-		homeToolItem.setToolTipText("Home");
+		homeToolItem.setToolTipText(Main.getLanguage().getContent("Home"));
 		homeToolItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				HelpToolBar.this.helpWindowController.goHome();
@@ -139,7 +140,7 @@ public class HelpToolBar {
 		printToolItem.setImage(ResourceLoader.loadImage(display, "hlp/print_default.png"));
 		printToolItem.setHotImage(ResourceLoader.loadImage(display, "hlp/print_hot.png"));
 		printToolItem.setDisabledImage(ResourceLoader.loadImage(display, "hlp/print_disabled.png"));
-		printToolItem.setToolTipText("Print");
+		printToolItem.setToolTipText(Main.getLanguage().getContent("Print"));
 		printToolItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				HelpToolBar.this.helpWindowController.print();

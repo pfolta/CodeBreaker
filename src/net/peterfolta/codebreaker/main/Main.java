@@ -8,7 +8,7 @@
  * 
  * File:				Main.java
  * Created:				2015/8/6
- * Last modified:		2015/8/6
+ * Last modified:		2015/8/10
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -28,15 +28,24 @@
 package net.peterfolta.codebreaker.main;
 
 import net.peterfolta.codebreaker.controllers.gui.GUIController;
+import net.peterfolta.codebreaker.controllers.main.LanguageController;
 import net.peterfolta.codebreaker.enums.ExitCode;
+import net.peterfolta.codebreaker.model.Language;
 
 public class Main {
 	
+	private static LanguageController languageController;
 	private static GUIController guiController;
 	
 	public static void main(String[] args) {
+		languageController = new LanguageController();
+		
 		guiController = new GUIController();
 		guiController.showMainWindow();
+	}
+	
+	public static Language getLanguage() {
+		return languageController.getLanguage();
 	}
 	
 	public static void exit(ExitCode exitCode) {

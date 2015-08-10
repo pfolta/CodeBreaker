@@ -8,7 +8,7 @@
  * 
  * File:				HelpWindowController.java
  * Created:				2015/8/9
- * Last modified:		2015/8/9
+ * Last modified:		2015/8/10
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -30,6 +30,7 @@ package net.peterfolta.codebreaker.controllers.gui;
 import net.peterfolta.codebreaker.gui.helpwindow.HelpBrowser;
 import net.peterfolta.codebreaker.gui.helpwindow.HelpToolBar;
 import net.peterfolta.codebreaker.gui.helpwindow.HelpWindow;
+import net.peterfolta.codebreaker.main.Main;
 import net.peterfolta.codebreaker.tools.ResourceLoader;
 
 import org.eclipse.swt.widgets.Display;
@@ -48,7 +49,7 @@ public class HelpWindowController {
 	public HelpWindowController(Display display, Shell mainShell) {
 		this.display = display;
 		
-		homeURL = ResourceLoader.getHelp("en");
+		homeURL = ResourceLoader.getHelp(Main.getLanguage().getLanguageKey());
 		
 		helpWindow = new HelpWindow(this.display, this, mainShell);
 		helpToolBar = new HelpToolBar(this.display, this, helpWindow.getHelpWindow());

@@ -8,7 +8,7 @@
  * 
  * File:				HelpWindow.java
  * Created:				2015/8/9
- * Last modified:		2015/8/9
+ * Last modified:		2015/8/10
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -28,6 +28,7 @@
 package net.peterfolta.codebreaker.gui.helpwindow;
 
 import net.peterfolta.codebreaker.controllers.gui.HelpWindowController;
+import net.peterfolta.codebreaker.main.Main;
 import net.peterfolta.codebreaker.tools.WindowTools;
 
 import org.eclipse.swt.graphics.Color;
@@ -50,7 +51,7 @@ public class HelpWindow {
 		
 		helpShell = new Shell(this.display);
 		
-		helpShell.setText("Help");
+		helpShell.setText(Main.getLanguage().getContent("Help"));
 		
 		helpShell.setBackground(new Color(this.display, 255, 255, 255));
 		

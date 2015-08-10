@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Language>
+	<Information>
+		<Product>CodeBreaker</Product>
+		<Version>0.0.1</Version>
+		<ProductURL></ProductURL>
+		<LanguageName>German</LanguageName>
+		<NativeName>Deutsch</NativeName>
+		<Translators>
+			<Translator>Peter Folta</Translator>
+		</Translators>
+	</Information>
+	
+	<Translations>
+		<About>Über CodeBreaker</About>		
+		
+		<Back>Zurück</Back>
+		
+		<Exit>Beenden</Exit>
+		
+		<Forward>Vorwärts</Forward>
+		
+		<Game>Spiel</Game>
+		
+		<Help>Hilfe</Help>
+		<Home>Start</Home>
+		
+		<NewGame>Neues Spiel</NewGame>
+		
+		<Options>Optionen</Options>
+		
+		<Print>Drucken</Print>
+		
+		<Resign>Aufgeben</Resign>
+	</Translations>
+</Language>

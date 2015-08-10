@@ -8,7 +8,7 @@
  * 
  * File:				MainMenuBar.java
  * Created:				2015/8/7
- * Last modified:		2015/8/9
+ * Last modified:		2015/8/10
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -28,7 +28,7 @@
 package net.peterfolta.codebreaker.gui.mainwindow;
 
 import net.peterfolta.codebreaker.controllers.gui.MainWindowController;
-import net.peterfolta.codebreaker.main.Data;
+import net.peterfolta.codebreaker.main.Main;
 import net.peterfolta.codebreaker.tools.Platform;
 
 import org.eclipse.swt.SWT;
@@ -74,13 +74,13 @@ public class MainMenuBar {
 		}
 		
 		gameMenuItem = new MenuItem(mainMenu, SWT.CASCADE);
-		gameMenuItem.setText("Game");
+		gameMenuItem.setText(Main.getLanguage().getContent("Game"));
 		
 		gameMenu = new Menu(gameMenuItem);
 		gameMenuItem.setMenu(gameMenu);
 		
 		gameMenuNewGameItem = new MenuItem(gameMenu, SWT.PUSH);
-		gameMenuNewGameItem.setText("New Game");
+		gameMenuNewGameItem.setText(Main.getLanguage().getContent("NewGame"));
 		
 		if (Platform.isMac()) {
 			gameMenuNewGameItem.setAccelerator(SWT.COMMAND | 'N');
@@ -102,7 +102,7 @@ public class MainMenuBar {
 		 */
 		if (!Platform.isMac()) {
 			gameMenuOptionsItem = new MenuItem(gameMenu, SWT.PUSH);
-			gameMenuOptionsItem.setText("Options");
+			gameMenuOptionsItem.setText(Main.getLanguage().getContent("Options"));
 			gameMenuOptionsItem.addListener(SWT.Selection, new Listener() {
 				public void handleEvent(Event event) {
 					System.out.println("gameMenuOptionsItem clicked");
@@ -113,7 +113,7 @@ public class MainMenuBar {
 		new MenuItem(gameMenu, SWT.SEPARATOR);
 		
 		gameMenuResignItem = new MenuItem(gameMenu, SWT.PUSH);
-		gameMenuResignItem.setText("Resign");
+		gameMenuResignItem.setText(Main.getLanguage().getContent("Resign"));
 		gameMenuResignItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				System.out.println("gameMenuResignItem clicked");
@@ -125,7 +125,7 @@ public class MainMenuBar {
 		 */
 		if (!Platform.isMac()) {
 			gameMenuExitItem = new MenuItem(gameMenu, SWT.PUSH);
-			gameMenuExitItem.setText("Exit\tAlt+F4");
+			gameMenuExitItem.setText(Main.getLanguage().getContent("Exit") + "\tAlt+F4");
 			gameMenuExitItem.setAccelerator(SWT.ALT | SWT.F4);
 			gameMenuExitItem.addListener(SWT.Selection, new Listener() {
 				public void handleEvent(Event event) {
@@ -135,13 +135,13 @@ public class MainMenuBar {
 		}
 		
 		helpMenuItem = new MenuItem(mainMenu, SWT.CASCADE);
-		helpMenuItem.setText("Help");
+		helpMenuItem.setText(Main.getLanguage().getContent("Help"));
 		
 		helpMenu = new Menu(helpMenuItem);
 		helpMenuItem.setMenu(helpMenu);
 		
 		helpMenuHelpItem = new MenuItem(helpMenu, SWT.PUSH);
-		helpMenuHelpItem.setText("Help");
+		helpMenuHelpItem.setText(Main.getLanguage().getContent("Help"));
 		
 		if (Platform.isMac()) {
 			helpMenuHelpItem.setAccelerator(SWT.COMMAND | '?');
@@ -163,7 +163,7 @@ public class MainMenuBar {
 			new MenuItem(helpMenu, SWT.SEPARATOR);
 			
 			helpMenuAboutItem = new MenuItem(helpMenu, SWT.PUSH);
-			helpMenuAboutItem.setText("About " + Data.APP_NAME);
+			helpMenuAboutItem.setText(Main.getLanguage().getContent("About"));
 			helpMenuAboutItem.addListener(SWT.Selection, new Listener() {
 				public void handleEvent(Event event) {
 					System.out.println("helpMenuAboutItem clicked");

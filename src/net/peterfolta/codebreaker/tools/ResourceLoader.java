@@ -8,7 +8,7 @@
  * 
  * File:				ResourceLoader.java
  * Created:				2015/8/9
- * Last modified:		2015/8/9
+ * Last modified:		2015/8/10
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -42,6 +42,10 @@ public class ResourceLoader {
 		}
 
 		return image;
+	}
+	
+	public static String getLanguageDirectory() {
+		return System.getProperty("user.dir") + "/res/lng";
 	}
 	
 	public static String getHelp(String language) {
