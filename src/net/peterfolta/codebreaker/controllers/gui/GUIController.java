@@ -8,7 +8,7 @@
  * 
  * File:				GUIController.java
  * Created:				2015/8/6
- * Last modified:		2015/8/9
+ * Last modified:		2015/8/15
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -35,6 +35,7 @@ public class GUIController {
 	
 	private MainWindowController mainWindowController;
 	private HelpWindowController helpWindowController;
+	private AchievementsWindowController achievementsWindowController;
 	
 	private Display display;
 	
@@ -67,6 +68,14 @@ public class GUIController {
 		
 		helpWindowController.showHelpWindow();
 		helpWindowController.goHome();
+	}
+	
+	public void showAchievementsWindow() {
+		if (achievementsWindowController == null || achievementsWindowController.getAchievementsWindow().isDisposed()) {
+			achievementsWindowController = new AchievementsWindowController(display, mainWindowController.getMainWindow());
+		}
+		
+		achievementsWindowController.showAchievementsWindow();
 	}
 	
 }

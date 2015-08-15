@@ -8,7 +8,7 @@
  * 
  * File:				MainWindowController.java
  * Created:				2015/8/6
- * Last modified:		2015/8/9
+ * Last modified:		2015/8/15
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -75,6 +75,10 @@ public class MainWindowController {
 	
 	public void showHelpWindow() {
 		guiController.showHelpWindow();
+	}
+	
+	public void showAchievementsWindow() {
+		guiController.showAchievementsWindow();
 	}
 	
 }

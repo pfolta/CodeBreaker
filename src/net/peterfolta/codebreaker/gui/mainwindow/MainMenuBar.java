@@ -8,7 +8,7 @@
  * 
  * File:				MainMenuBar.java
  * Created:				2015/8/7
- * Last modified:		2015/8/10
+ * Last modified:		2015/8/15
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -50,6 +50,7 @@ public class MainMenuBar {
 	private Menu gameMenu;
 	private MenuItem gameMenuItem;
 	private MenuItem gameMenuNewGameItem;
+	private MenuItem gameMenuAchievementsItem;
 	private MenuItem gameMenuOptionsItem;
 	private MenuItem gameMenuResignItem;
 	private MenuItem gameMenuExitItem;
@@ -92,6 +93,16 @@ public class MainMenuBar {
 		gameMenuNewGameItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				System.out.println("gameMenuNewGameItem clicked");
+			}
+		});
+		
+		new MenuItem(gameMenu, SWT.SEPARATOR);
+		
+		gameMenuAchievementsItem = new MenuItem(gameMenu, SWT.PUSH);
+		gameMenuAchievementsItem.setText(Main.getLanguage().getContent("Achievements"));
+		gameMenuAchievementsItem.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event event) {
+				MainMenuBar.this.mainWindowController.showAchievementsWindow();
 			}
 		});
 		
