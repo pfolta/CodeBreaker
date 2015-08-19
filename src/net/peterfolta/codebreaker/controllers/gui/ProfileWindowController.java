@@ -6,9 +6,9 @@
  * Version:				0.0.1
  * Website:				http://www.peterfolta.net/software/codebreaker
  * 
- * File:				AchievementsWindowController.java
+ * File:				ProfileWindowController.java
  * Created:				2015/8/15
- * Last modified:		2015/8/15
+ * Last modified:		2015/8/17
  * Author:				Peter Folta <mail@peterfolta.net>
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -27,29 +27,29 @@
 
 package net.peterfolta.codebreaker.controllers.gui;
 
-import net.peterfolta.codebreaker.gui.achievementswindow.AchievementsWindow;
+import net.peterfolta.codebreaker.gui.profilewindow.ProfileWindow;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
-public class AchievementsWindowController {
+public class ProfileWindowController {
 	
 	private Display display;
 	
-	private AchievementsWindow achievementsWindow;
+	private ProfileWindow profileWindow;
 	
-	public AchievementsWindowController(Display display, Shell mainShell) {
+	public ProfileWindowController(Display display, Shell mainShell) {
 		this.display = display;
 		
-		achievementsWindow = new AchievementsWindow(this.display, this, mainShell);
+		profileWindow = new ProfileWindow(this.display, this, mainShell);
 	}
 	
-	public void showAchievementsWindow() {
-		achievementsWindow.show();
+	public void showProfileWindow() {
+		profileWindow.show();
 	}
 	
-	public Shell getAchievementsWindow() {
-		return achievementsWindow.getAchievementsWindow();
+	public Shell getProfileWindow() {
+		return profileWindow.getProfileWindow();
 	}
 	
 }

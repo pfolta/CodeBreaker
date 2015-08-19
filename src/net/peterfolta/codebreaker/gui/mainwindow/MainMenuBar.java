@@ -50,6 +50,8 @@ public class MainMenuBar {
 	private Menu gameMenu;
 	private MenuItem gameMenuItem;
 	private MenuItem gameMenuNewGameItem;
+	private MenuItem gameMenuProfileItem;
+	private MenuItem gameMenuStatisticsItem;
 	private MenuItem gameMenuAchievementsItem;
 	private MenuItem gameMenuOptionsItem;
 	private MenuItem gameMenuResignItem;
@@ -98,20 +100,36 @@ public class MainMenuBar {
 		
 		new MenuItem(gameMenu, SWT.SEPARATOR);
 		
+		gameMenuProfileItem = new MenuItem(gameMenu, SWT.PUSH);
+		gameMenuProfileItem.setText(Main.getLanguage().getContent("Profile"));
+		gameMenuProfileItem.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event event) {
+				MainMenuBar.this.mainWindowController.showProfileWindow();
+			}
+		});
+		
+		gameMenuStatisticsItem = new MenuItem(gameMenu, SWT.PUSH);
+		gameMenuStatisticsItem.setText(Main.getLanguage().getContent("Statistics"));
+		gameMenuStatisticsItem.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event event) {
+				System.out.println("gameMenuStatisticsItem clicked");
+			}
+		});
+		
 		gameMenuAchievementsItem = new MenuItem(gameMenu, SWT.PUSH);
 		gameMenuAchievementsItem.setText(Main.getLanguage().getContent("Achievements"));
 		gameMenuAchievementsItem.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
-				MainMenuBar.this.mainWindowController.showAchievementsWindow();
+				System.out.println("gameMenuAchievementsItem clicked");
 			}
 		});
-		
-		new MenuItem(gameMenu, SWT.SEPARATOR);
 		
 		/*
 		 * Do not create "Options" Menu Item on Mac OS
 		 */
 		if (!Platform.isMac()) {
+			new MenuItem(gameMenu, SWT.SEPARATOR);
+			
 			gameMenuOptionsItem = new MenuItem(gameMenu, SWT.PUSH);
 			gameMenuOptionsItem.setText(Main.getLanguage().getContent("Options"));
 			gameMenuOptionsItem.addListener(SWT.Selection, new Listener() {

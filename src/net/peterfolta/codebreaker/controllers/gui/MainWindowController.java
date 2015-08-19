@@ -77,8 +77,8 @@ public class MainWindowController {
 		guiController.showHelpWindow();
 	}
 	
-	public void showAchievementsWindow() {
-		guiController.showAchievementsWindow();
+	public void showProfileWindow() {
+		guiController.showProfileWindow();
 	}
 	
 }

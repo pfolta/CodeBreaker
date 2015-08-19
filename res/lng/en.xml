@@ -32,7 +32,10 @@
 		<Options>Options</Options>
 		
 		<Print>Print</Print>
+		<Profile>Profile</Profile>
 		
 		<Resign>Resign</Resign>
+		
+		<Statistics>Statistics</Statistics>
 	</Translations>
 </Language>

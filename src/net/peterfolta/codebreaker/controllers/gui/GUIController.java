@@ -35,7 +35,7 @@ public class GUIController {
 	
 	private MainWindowController mainWindowController;
 	private HelpWindowController helpWindowController;
-	private AchievementsWindowController achievementsWindowController;
+	private ProfileWindowController profileWindowController;
 	
 	private Display display;
 	
@@ -70,12 +70,10 @@ public class GUIController {
 		helpWindowController.goHome();
 	}
 	
-	public void showAchievementsWindow() {
-		if (achievementsWindowController == null || achievementsWindowController.getAchievementsWindow().isDisposed()) {
-			achievementsWindowController = new AchievementsWindowController(display, mainWindowController.getMainWindow());
-		}
+	public void showProfileWindow() {
+		profileWindowController = new ProfileWindowController(display, mainWindowController.getMainWindow());
 		
-		achievementsWindowController.showAchievementsWindow();
+		profileWindowController.showProfileWindow();
 	}
 	
 }
